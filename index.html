@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dil Öğrenme Uygulaması</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F9FAFB;
+        }
+        .streak-flame {
+            animation: flicker 1.5s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        .progress-ring-circle {
+            stroke-dasharray: 283;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Nav Bar -->
+    <nav class="fixed w-full top-0 bg-white shadow-sm z-50 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+            <span class="font-['Pacifico'] text-primary text-xl">logo</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <div class="relative w-8 h-8 flex items-center justify-center">
+                <i class="ri-notification-3-line ri-lg text-gray-600"></i>
+                <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+            </div>
+            <div class="w-8 h-8 rounded-full overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20young%20Turkish%20man%20with%20short%20dark%20hair%2C%20friendly%20smile%2C%20professional%20headshot%2C%20isolated%20on%20light%20background&width=100&height=100&seq=user1&orientation=squarish" alt="Profil" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 pb-20 px-4">
+        <!-- User Progress Section -->
+        <section class="mt-4 mb-6">
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-full overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20young%20Turkish%20man%20with%20short%20dark%20hair%2C%20friendly%20smile%2C%20professional%20headshot%2C%20isolated%20on%20light%20background&width=100&height=100&seq=user2&orientation=squarish" alt="Profil" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h2 class="font-semibold text-gray-800">Merhaba, Mehmet!</h2>
+                            <p class="text-sm text-gray-500">Bugün öğrenmeye devam et</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <div class="streak-flame w-6 h-6 flex items-center justify-center text-orange-500">
+                            <i class="ri-fire-fill ri-lg"></i>
+                        </div>
+                        <span class="font-semibold text-gray-800">12</span>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs text-gray-500">Günlük hedef</span>
+                            <span class="text-xs font-medium text-primary">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="ml-4 relative w-12 h-12 flex items-center justify-center">
+                        <svg class="progress-ring w-12 h-12">
+                            <circle class="progress-ring-circle" stroke="#E5E7EB" stroke-width="4" fill="transparent" r="18" cx="24" cy="24"/>
+                            <circle class="progress-ring-circle" stroke="#4F46E5" stroke-width="4" fill="transparent" r="18" cx="24" cy="24" stroke-dashoffset="70"/>
+                        </svg>
+                        <span class="absolute text-xs font-semibold">75%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Language Selection -->
+        <section class="mb-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-3">Dil Seçimi</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-24 relative">
+                        <img src="https://readdy.ai/api/search-image?query=English%20language%20concept%2C%20British%20flag%2C%20Big%20Ben%2C%20red%20telephone%20booth%2C%20professional%20photography%20with%20soft%20lighting%20on%20white%20background%2C%20centered%20composition&width=200&height=150&seq=english&orientation=landscape" alt="İngilizce" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-2 left-2 text-white font-medium">İngilizce</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-primary">45%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-24 relative">
+                        <img src="https://readdy.ai/api/search-image?query=Spanish%20language%20concept%2C%20Spanish%20flag%2C%20flamenco%20dancer%2C%20professional%20photography%20with%20soft%20lighting%20on%20white%20background%2C%20centered%20composition&width=200&height=150&seq=spanish&orientation=landscape" alt="İspanyolca" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-2 left-2 text-white font-medium">İspanyolca</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-primary">20%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-24 relative">
+                        <img src="https://readdy.ai/api/search-image?query=French%20language%20concept%2C%20French%20flag%2C%20Eiffel%20Tower%2C%20baguette%2C%20professional%20photography%20with%20soft%20lighting%20on%20white%20background%2C%20centered%20composition&width=200&height=150&seq=french&orientation=landscape" alt="Fransızca" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-2 left-2 text-white font-medium">Fransızca</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-gray-400">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div class="bg-gray-400 h-1.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer">
+                    <div class="h-24 relative">
+                        <img src="https://readdy.ai/api/search-image?query=German%20language%20concept%2C%20German%20flag%2C%20castle%2C%20professional%20photography%20with%20soft%20lighting%20on%20white%20background%2C%20centered%20composition&width=200&height=150&seq=german&orientation=landscape" alt="Almanca" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-2 left-2 text-white font-medium">Almanca</div>
+                    </div>
+                    <div class="p-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-gray-400">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div class="bg-gray-400 h-1.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Learning Path -->
+        <section class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold text-gray-800">İngilizce Dersleri</h2>
+                <button class="text-sm text-primary font-medium cursor-pointer">Tümünü Gör</button>
+            </div>
+            
+            <div class="space-y-3">
+                <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="ri-book-open-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Temel Kelimeler</h3>
+                                <p class="text-xs text-gray-500">Seviye: Başlangıç</p>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-arrow-right-s-line ri-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-primary">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="ri-chat-1-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Günlük Konuşmalar</h3>
+                                <p class="text-xs text-gray-500">Seviye: Başlangıç</p>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-arrow-right-s-line ri-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs text-gray-500">İlerleme</span>
+                            <span class="text-xs font-medium text-primary">45%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm p-4 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+                                <i class="ri-lock-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-500">Gramer Yapıları</h3>
+                                <p class="text-xs text-gray-400">Seviye: Orta</p>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400">
+                            <i class="ri-lock-line ri-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-xs text-gray-400">İlerleme</span>
+                            <span class="text-xs font-medium text-gray-400">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                            <div class="bg-gray-400 h-1.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Challenges -->
+        <section class="mb-6">
+            <h2 class="text-lg font-semibold text-gray-800 mb-3">Günlük Görevler</h2>
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-500">
+                                <i class="ri-check-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">5 kelime öğren</h3>
+                                <p class="text-xs text-gray-500">+10 XP</p>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">Tamamlandı</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="ri-time-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">10 dakika pratik yap</h3>
+                                <p class="text-xs text-gray-500">+20 XP</p>
+                            </div>
+                        </div>
+                        <button class="text-xs bg-primary text-white px-3 py-1.5 rounded-button font-medium !rounded-button cursor-pointer">Başla</button>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="ri-mic-line ri-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Konuşma pratiği</h3>
+                                <p class="text-xs text-gray-500">+15 XP</p>
+                            </div>
+                        </div>
+                        <button class="text-xs bg-primary text-white px-3 py-1.5 rounded-button font-medium !rounded-button cursor-pointer">Başla</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section class="mb-6">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-lg font-semibold text-gray-800">Arkadaşlar</h2>
+                <button class="text-sm text-primary font-medium cursor-pointer">Tümünü Gör</button>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20young%20Turkish%20woman%20with%20long%20dark%20hair%2C%20friendly%20smile%2C%20professional%20headshot%2C%20isolated%20on%20light%20background&width=100&height=100&seq=friend1&orientation=squarish" alt="Ayşe" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Ayşe Yılmaz</h3>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 flex items-center justify-center text-orange-500">
+                                        <i class="ri-fire-fill ri-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">15 gün</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-sm font-semibold text-gray-800">1250</span>
+                            <span class="text-xs text-gray-500">XP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20middle-aged%20Turkish%20man%20with%20glasses%2C%20professional%20headshot%2C%20isolated%20on%20light%20background&width=100&height=100&seq=friend2&orientation=squarish" alt="Ahmet" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Ahmet Demir</h3>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 flex items-center justify-center text-orange-500">
+                                        <i class="ri-fire-fill ri-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">8 gün</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-sm font-semibold text-gray-800">980</span>
+                            <span class="text-xs text-gray-500">XP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=portrait%20of%20a%20young%20Turkish%20woman%20with%20short%20hair%2C%20friendly%20smile%2C%20professional%20headshot%2C%20isolated%20on%20light%20background&width=100&height=100&seq=friend3&orientation=squarish" alt="Zeynep" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-gray-800">Zeynep Kaya</h3>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 flex items-center justify-center text-orange-500">
+                                        <i class="ri-fire-fill ri-sm"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-1">20 gün</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-sm font-semibold text-gray-800">1520</span>
+                            <span class="text-xs text-gray-500">XP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Tab Bar -->
+    <div class="fixed bottom-0 w-full bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50">
+        <div class="grid grid-cols-5 h-16">
+            <div class="flex flex-col items-center justify-center text-primary cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-home-5-fill ri-lg"></i>
+                </div>
+                <span class="text-xs mt-1">Ana Sayfa</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-gray-500 cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-book-open-line ri-lg"></i>
+                </div>
+                <span class="text-xs mt-1">Dersler</span>
+            </div>
+            <div class="flex flex-col items-center justify-center cursor-pointer">
+                <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white -mt-5 shadow-lg">
+                    <i class="ri-play-fill ri-2x"></i>
+                </div>
+                <span class="text-xs text-primary mt-1">Pratik</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-gray-500 cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-trophy-line ri-lg"></i>
+                </div>
+                <span class="text-xs mt-1">Sıralama</span>
+            </div>
+            <div class="flex flex-col items-center justify-center text-gray-500 cursor-pointer">
+                <div class="w-6 h-6 flex items-center justify-center">
+                    <i class="ri-user-line ri-lg"></i>
+                </div>
+                <span class="text-xs mt-1">Profil</span>
+            </div>
+        </div>
+    </div>
+
+    <script id="progressRingAnimation">
+        document.addEventListener('DOMContentLoaded', function() {
+            const circle = document.querySelector('.progress-ring-circle:last-child');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            
+            function setProgress(percent) {
+                const offset = circumference - percent / 100 * circumference;
+                circle.style.strokeDashoffset = offset;
+            }
+            
+            setProgress(75);
+        });
+    </script>
+    <script id="tabBarInteraction">
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabItems = document.querySelectorAll('.grid-cols-5 > div');
+            
+            tabItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabItems.forEach(tab => {
+                        const icon = tab.querySelector('i');
+                        const text = tab.querySelector('span');
+                        
+                        if (!icon.classList.contains('ri-play-fill')) {
+                            tab.classList.remove('text-primary');
+                            tab.classList.add('text-gray-500');
+                            
+                            // Change fill to line for icons
+                            if (icon.classList.contains('ri-home-5-fill')) {
+                                icon.classList.remove('ri-home-5-fill');
+                                icon.classList.add('ri-home-5-line');
+                            } else if (icon.classList.contains('ri-trophy-fill')) {
+                                icon.classList.remove('ri-trophy-fill');
+                                icon.classList.add('ri-trophy-line');
+                            } else if (icon.classList.contains('ri-user-fill')) {
+                                icon.classList.remove('ri-user-fill');
+                                icon.classList.add('ri-user-line');
+                            } else if (icon.classList.contains('ri-book-open-fill')) {
+                                icon.classList.remove('ri-book-open-fill');
+                                icon.classList.add('ri-book-open-line');
+                            }
+                        }
+                    });
+                    
+                    // Add active class to clicked tab
+                    const clickedIcon = this.querySelector('i');
+                    
+                    if (!clickedIcon.classList.contains('ri-play-fill')) {
+                        this.classList.remove('text-gray-500');
+                        this.classList.add('text-primary');
+                        
+                        // Change line to fill for icons
+                        if (clickedIcon.classList.contains('ri-home-5-line')) {
+                            clickedIcon.classList.remove('ri-home-5-line');
+                            clickedIcon.classList.add('ri-home-5-fill');
+                        } else if (clickedIcon.classList.contains('ri-trophy-line')) {
+                            clickedIcon.classList.remove('ri-trophy-line');
+                            clickedIcon.classList.add('ri-trophy-fill');
+                        } else if (clickedIcon.classList.contains('ri-user-line')) {
+                            clickedIcon.classList.remove('ri-user-line');
+                            clickedIcon.classList.add('ri-user-fill');
+                        } else if (clickedIcon.classList.contains('ri-book-open-line')) {
+                            clickedIcon.classList.remove('ri-book-open-line');
+                            clickedIcon.classList.add('ri-book-open-fill');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="lessonInteraction">
+        document.addEventListener('DOMContentLoaded', function() {
+            const lessonCards = document.querySelectorAll('.bg-white.rounded-lg.shadow-sm.p-4.cursor-pointer');
+            
+            lessonCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const isLocked = this.querySelector('.ri-lock-line');
+                    if (!isLocked) {
+                        // Create a lesson start modal
+                        const modal = document.createElement('div');
+                        modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+                        
+                        const lessonTitle = this.querySelector('h3').textContent;
+                        
+                        modal.innerHTML = `
+                            <div class="bg-white rounded-lg w-[90%] max-w-sm p-5">
+                                <div class="text-center mb-4">
+                                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-3">
+                                        <i class="ri-book-open-line ri-2x"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-lg text-gray-800">${lessonTitle}</h3>
+                                    <p class="text-sm text-gray-500 mt-1">Bu dersi başlatmak istiyor musun?</p>
+                                </div>
+                                <div class="flex space-x-3">
+                                    <button class="flex-1 py-2.5 border border-gray-300 rounded-button text-gray-700 font-medium cursor-pointer">İptal</button>
+                                    <button class="flex-1 py-2.5 bg-primary text-white rounded-button font-medium cursor-pointer">Başlat</button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(modal);
+                        
+                        // Close modal when clicking cancel or outside
+                        const cancelBtn = modal.querySelector('button:first-child');
+                        cancelBtn.addEventListener('click', () => {
+                            document.body.removeChild(modal);
+                        });
+                        
+                        modal.addEventListener('click', (e) => {
+                            if (e.target === modal) {
+                                document.body.removeChild(modal);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
